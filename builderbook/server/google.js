@@ -87,6 +87,7 @@ function setupGoogle({ server, ROOT_URL }) {
       } else if (req.session.finalUrl) {
         res.redirect(`${ROOT_URL}${req.session.finalUrl}`);
       } else {
+        // eslint-disable-next-line
         res.redirect('/my-books');
       }
     },
@@ -94,7 +95,7 @@ function setupGoogle({ server, ROOT_URL }) {
 
   server.get('/logout', (req, res) => {
     req.logout();
-    res.redirect('/login');
+    res.redirect('/home');
   });
 }
 

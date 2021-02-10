@@ -100,17 +100,7 @@ class MyDocument extends Document {
             }}
           />
         </Head>
-        <body
-          style={{
-            font: '16px Roboto',
-            color: '#222',
-            margin: '0px auto',
-            fontWeight: '300',
-            lineHeight: '1.5em',
-            backgroundColor: '#F7F9FC',
-            minHeight: '100%',
-          }}
-        >
+        <body>
           <Main />
           {/* Added next.config.js
           {/* eslint-disable-next-line react/no-danger */}
@@ -121,6 +111,15 @@ class MyDocument extends Document {
     );
   }
 }
+// style={{
+//   font: '16px Roboto',
+//   color: '#222',
+//   // margin: '0px auto',
+//   fontWeight: '300',
+//   // lineHeight: '1.5em',
+//   backgroundColor: '#F7F9FC',
+//   minHeight: '100%',
+// }}
 
 // MyDocument.getInitialProps = async (ctx) => {
 //   // Resolution order

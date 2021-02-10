@@ -18,7 +18,7 @@ function Login({ router }) {
   const redirectUrl = (router && router.query && router.query.redirectUrl) || '';
 
   return (
-    <div style={{ textAlign: 'center', margin: '0 20px' }}>
+    <div style={{ textAlign: 'center', margin: '200px 20px' }}>
       <Head>
         <title>Log in to Builder Book</title>
         <meta name="description" content="Login page for builderbook.org" />

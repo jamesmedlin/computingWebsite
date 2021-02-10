@@ -34,9 +34,11 @@ const port = process.env.PORT || 8000;
 const ROOT_URL = getRootUrl();
 
 const URL_MAP = {
+  '/about': '/public/about',
   '/home': '/public/home',
   '/login': '/public/login',
   '/my-books': '/customer/my-books',
+  '/dashboard': '/customer/dashboard',
 };
 
 const app = next({ dev });

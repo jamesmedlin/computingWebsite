@@ -83,7 +83,7 @@ function setupGoogle({ server, ROOT_URL }) {
       console.log(`req.session.finalUrl:${req.session.finalUrl}`);
 
       if (req.user && req.user.isAdmin) {
-        res.redirect('/admin');
+        res.redirect('/dashboard');
       } else if (req.session.finalUrl) {
         res.redirect(`${ROOT_URL}${req.session.finalUrl}`);
       } else {

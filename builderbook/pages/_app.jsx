@@ -10,7 +10,8 @@ import NProgress from 'nprogress';
 import { theme } from '../lib/theme';
 
 import Notifier from '../components/Notifier';
-import Header from '../components/Header';
+import NavBar from '../components/NavBar';
+import { Footer } from '../components/Footer';
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start();
@@ -36,10 +37,10 @@ const propTypes = {
 class MyApp extends App {
   componentDidMount() {
     // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles && jssStyles.parentNode) {
-      jssStyles.parentNode.removeChild(jssStyles);
-    }
+    // const jssStyles = document.querySelector('#jss-server-side');
+    // if (jssStyles && jssStyles.parentNode) {
+    //   jssStyles.parentNode.removeChild(jssStyles);
+    // }
   }
 
   render() {
@@ -55,8 +56,9 @@ class MyApp extends App {
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
         <CssBaseline />
-        {pageProps.chapter ? null : <Header {...pageProps} />}
+        <NavBar {...pageProps} />
         <Component {...pageProps} />
+        <Footer />
         <Notifier />
       </ThemeProvider>
     );

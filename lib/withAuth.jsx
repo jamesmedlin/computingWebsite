@@ -60,7 +60,7 @@ export default function withAuth(
       }
 
       if (logoutRequired && user) {
-        Router.push('/');
+        Router.push('/dashboard');
       }
     }
 

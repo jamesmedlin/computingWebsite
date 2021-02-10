@@ -5,6 +5,7 @@ import { Container } from '../../components/Container';
 import { NavigationButton } from '../../components/NavigationButton';
 import { BigTitle, H1, LittleTitle, BodyText } from '../../common/textElements';
 import Slideshow from '../../components/Slider';
+import { Footer } from '../../components/Footer';
 
 const Home = () => (
   <div className="container">
@@ -122,6 +123,7 @@ const Home = () => (
         </div>
       </Container>
     </div>
+    <Footer />
     {/* </main> */}
 
     <style jsx>

@@ -11,7 +11,6 @@ import { theme } from '../lib/theme';
 
 import Notifier from '../components/Notifier';
 import NavBar from '../components/NavBar';
-import { Footer } from '../components/Footer';
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start();
@@ -58,7 +57,6 @@ class MyApp extends App {
         <CssBaseline />
         <NavBar {...pageProps} />
         <Component {...pageProps} />
-        <Footer />
         <Notifier />
       </ThemeProvider>
     );

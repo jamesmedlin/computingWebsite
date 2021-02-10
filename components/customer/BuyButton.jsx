@@ -14,8 +14,7 @@ const styleBuyButton = {
 };
 
 const dev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 8000;
-const ROOT_URL = `http://localhost:${port}`;
+const ROOT_URL = process.env.URL_APP;
 
 const stripePromise = loadStripe(
   dev ? process.env.STRIPE_TEST_PUBLISHABLEKEY : process.env.STRIPE_LIVE_PUBLISHABLEKEY,

@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { NavigationButton } from './NavigationButton';
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
   const [isNavOpen, setNavIsOpen] = useState(false);
 
   const toggleNav = () => {
@@ -38,38 +39,62 @@ const NavBar = () => {
               <span className="toggle-bar" />
             </button>
           </div>
-          <nav className={isNavOpen ? 'is-open' : null}>
-            <div className="middle">
-              <Link href="/home">
-                <a className="link" onClick={closeNav}>
-                  <span className="link-text">Home</span>
-                </a>
-              </Link>
-              <Link href="/about">
-                <a className="link" onClick={closeNav}>
-                  <span className="link-text">About</span>
-                </a>
-              </Link>
-              <Link href="/home">
-                <a className="link" onClick={closeNav}>
-                  <span className="link-text">Other</span>
-                </a>
-              </Link>
-            </div>
-            <Link href="/login">
-              {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-              <a className="link" onClick={closeNav}>
-                <span className="link-text">Log in</span>
-              </a>
-            </Link>
-            <a className="link" onClick={closeNav}>
-              <NavigationButton href="/get-started" width={177} height={58} borderRadius={5}>
-                <Link href="/">
-                  <span className="link-text">Advertise!</span>
+          {!user ? (
+            <nav className={isNavOpen ? 'is-open' : null}>
+              <div className="middle">
+                <Link href="/home">
+                  <a className="link" onClick={closeNav}>
+                    <span className="link-text">Home</span>
+                  </a>
                 </Link>
-              </NavigationButton>
-            </a>
-          </nav>
+                <Link href="/about">
+                  <a className="link" onClick={closeNav}>
+                    <span className="link-text">About</span>
+                  </a>
+                </Link>
+                <Link href="/home">
+                  <a className="link" onClick={closeNav}>
+                    <span className="link-text">Other</span>
+                  </a>
+                </Link>
+              </div>
+              <Link href="/login">
+                {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+                <a className="link" onClick={closeNav}>
+                  <span className="link-text">Log in</span>
+                </a>
+              </Link>
+              <a className="link" onClick={closeNav}>
+                <NavigationButton href="/get-started" width={177} height={58} borderRadius={5}>
+                  <Link href="/">
+                    <span className="link-text">Advertise!</span>
+                  </Link>
+                </NavigationButton>
+              </a>
+            </nav>
+          ) : (
+            <nav className={isNavOpen ? 'is-open' : null}>
+              <div className="middle">
+                <Link href="/dashboard">
+                  <a className="link" onClick={closeNav}>
+                    <span className="link-text">My Dashboard</span>
+                  </a>
+                </Link>
+              </div>
+              <Link href="/logout">
+                {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+                <a className="link" onClick={closeNav}>
+                  <span className="link-text">Log Out</span>
+                </a>
+              </Link>
+              <Link href="/settings">
+                {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+                <a className="link" onClick={closeNav}>
+                  <span className="link-text">Settings</span>
+                </a>
+              </Link>
+            </nav>
+          )}
         </div>
       </header>
       <style jsx>

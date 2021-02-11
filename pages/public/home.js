@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-
+import { withRouter } from 'next/router';
+import withAuth from '../../lib/withAuth';
 import { Container } from '../../components/Container';
 import { NavigationButton } from '../../components/NavigationButton';
 import { BigTitle, H1, LittleTitle, BodyText } from '../../common/textElements';
@@ -12,7 +13,6 @@ const Home = () => (
     {/* <Head>
       <title>MeetMe</title>
     </Head> */}
-
     {/* <main> */}
     <div className="topRow">
       <Container>
@@ -123,9 +123,7 @@ const Home = () => (
         </div>
       </Container>
     </div>
-    <Footer />
-    {/* </main> */}
-
+    <Footer />]{/* </main> */}
     <style jsx>
       {`
         .topRow {
@@ -262,7 +260,6 @@ const Home = () => (
         }
       `}
     </style>
-
     <style jsx global>
       {`
         html,
@@ -281,4 +278,4 @@ const Home = () => (
   </div>
 );
 
-export default Home;
+export default withAuth(withRouter(Home), { logoutRequired: true });

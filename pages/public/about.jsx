@@ -59,4 +59,4 @@ const About = () => {
   );
 };
 
-export default withAuth(withRouter(About), { logoutRequired: false });
+export default withAuth(withRouter(About), { logoutRequired: true });

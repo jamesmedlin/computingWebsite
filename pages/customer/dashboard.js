@@ -31,7 +31,6 @@ function Dashboard() {
             .topRow {
               padding-top: 200px;
               padding-bottom: 15px;
-              background-color: blue;
             }
           }
         `}

@@ -52,7 +52,7 @@ const NavBar = ({ user }) => {
                     <span className="link-text">About</span>
                   </a>
                 </Link>
-                <Link href="/home">
+                <Link href="/about">
                   <a className="link" onClick={closeNav}>
                     <span className="link-text">Other</span>
                   </a>
@@ -65,10 +65,8 @@ const NavBar = ({ user }) => {
                 </a>
               </Link>
               <a className="link" onClick={closeNav}>
-                <NavigationButton href="/get-started" width={177} height={58} borderRadius={5}>
-                  <Link href="/">
-                    <span className="link-text">Advertise!</span>
-                  </Link>
+                <NavigationButton href="/about" width={177} height={58} borderRadius={5}>
+                  <span className="link-text">Advertise!</span>
                 </NavigationButton>
               </a>
             </nav>

@@ -27,7 +27,7 @@ const Home = () => (
             Only 7% of users pay attention to internet ads.
           </BigTitle>
           <BigTitle marginTop={30} fontSize={60} mobileFontSize={30} color="#3d4849">
-            Crank that to 100%
+            We crank it to 100%
           </BigTitle>
         </div>
       </Container>
@@ -123,7 +123,7 @@ const Home = () => (
         </div>
       </Container>
     </div>
-    <Footer />]{/* </main> */}
+    <Footer />{/* </main> */}
     <style jsx>
       {`
         .topRow {

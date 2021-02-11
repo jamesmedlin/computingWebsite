@@ -1,6 +1,6 @@
 const express = require('express');
 const Book = require('../models/Book');
-const User = require('../models/User');
+const Customer = require('../models/Customer');
 const { getRepos } = require('../github');
 const logger = require('../logger');
 
@@ -55,7 +55,7 @@ router.get('/books/detail/:slug', async (req, res) => {
 // github-related
 
 router.get('/github/repos', async (req, res) => {
-  const user = await User.findById(req.user._id, 'isGithubConnected githubAccessToken');
+  const user = await Customer.findById(req.user._id, 'isGithubConnected githubAccessToken');
 
   if (!user.isGithubConnected || !user.githubAccessToken) {
     res.json({ error: 'Github not connected' });
@@ -74,7 +74,7 @@ router.get('/github/repos', async (req, res) => {
 router.post('/books/sync-content', async (req, res) => {
   const { bookId } = req.body;
 
-  const user = await User.findById(req.user._id, 'isGithubConnected githubAccessToken');
+  const user = await Customer.findById(req.user._id, 'isGithubConnected githubAccessToken');
 
   if (!user.isGithubConnected || !user.githubAccessToken) {
     res.json({ error: 'Github not connected' });

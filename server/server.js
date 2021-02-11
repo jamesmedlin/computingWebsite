@@ -11,7 +11,7 @@ const { setupGithub } = require('./github');
 const api = require('./api');
 
 const logger = require('./logger');
-// const { insertTemplates } = require('./models/EmailTemplate');
+const { insertTemplates } = require('./models/EmailTemplate');
 const routesWithSlug = require('./routesWithSlug');
 const getRootUrl = require('../lib/api/getRootUrl');
 const setupSitemapAndRobots = require('./sitemapAndRobots');
@@ -80,7 +80,7 @@ app.prepare().then(async () => {
 
   server.use(session(sess));
 
-  // await insertTemplates();
+  await insertTemplates();
 
   setupGoogle({ server, ROOT_URL });
   setupGithub({ server, ROOT_URL });

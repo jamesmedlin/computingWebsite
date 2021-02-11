@@ -1,13 +1,18 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import withAuth from '../../lib/withAuth';
 
+import { getMyAdvertisementsApiMethod } from '../../lib/api/customer';
 import { BigTitle, LittleTitle } from '../../common/textElements';
 import { Container } from '../../components/Container';
 
-function Dashboard() {
+function Dashboard({ advertisements }) {
   return (
     <>
       <div className="topRow">
+        {/* {advertisements.map((ad) => (
+          <div>{ad.name}</div>
+        ))} */}
         <div>Views: ___</div>
         <div>Customer Targeting:</div>
         <div>Age Range: ___</div>
@@ -38,5 +43,20 @@ function Dashboard() {
     </>
   );
 }
+
+Dashboard.getInitialProps = async ({ req, res }) => {
+  if (req && !req.user) {
+    res.redirect('/login');
+    return { advertisements: [] };
+  }
+
+  const headers = {};
+  if (req && req.headers && req.headers.cookie) {
+    headers.cookie = req.headers.cookie;
+  }
+
+  const { advertisements } = await getMyAdvertisementsApiMethod({ headers });
+  return { advertisements };
+};
 
 export default withAuth(Dashboard);

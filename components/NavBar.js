@@ -85,7 +85,7 @@ const NavBar = ({ user }) => {
                   <span className="link-text">Log Out</span>
                 </a>
               </Link>
-              <Link href="/settings">
+              <Link href="/dashboard">
                 {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
                 <a className="link" onClick={closeNav}>
                   <span className="link-text">Settings</span>

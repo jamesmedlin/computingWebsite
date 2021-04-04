@@ -1,6 +1,7 @@
 const express = require('express');
 const Book = require('../models/Book');
 const Customer = require('../models/Customer');
+const Advertisement = require('../models/Advertisement');
 const { getRepos } = require('../github');
 const logger = require('../logger');
 
@@ -34,10 +35,48 @@ router.post('/books/add', async (req, res) => {
   }
 });
 
+router.post('/advertisements/add', async (req, res) => {
+  try {
+    const advertisement = await Advertisement.add({ owner: req.user.id, ...req.body });
+    res.json(advertisement);
+  } catch (err) {
+    logger.error(err);
+    res.json({ error: err.message || err.toString() });
+  }
+});
+
+router.post('/advertisements/remove', async (req, res) => {
+  try {
+    const advertisement = await Advertisement.remove({ caller: req.user.id, ...req.body });
+    res.json(advertisement);
+  } catch (err) {
+    logger.error(err);
+    res.json({ error: err.message || err.toString() });
+  }
+});
+
 router.post('/books/edit', async (req, res) => {
   try {
     const editedBook = await Book.edit(req.body);
     res.json(editedBook);
+  } catch (err) {
+    res.json({ error: err.message || err.toString() });
+  }
+});
+
+router.post('/advertisements/edit', async (req, res) => {
+  try {
+    const editedAdvertisement = await Advertisement.edit(req.body);
+    res.json(editedAdvertisement);
+  } catch (err) {
+    res.json({ error: err.message || err.toString() });
+  }
+});
+
+router.get('/advertisements/detail/:slug', async (req, res) => {
+  try {
+    const advertisement = await Advertisement.getBySlug({ slug: req.params.slug });
+    res.json(advertisement);
   } catch (err) {
     res.json({ error: err.message || err.toString() });
   }

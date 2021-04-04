@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define */
-
 const mongoose = require('mongoose');
 
 const generateSlug = require('../utils/slugify');
@@ -22,14 +21,12 @@ const mongoSchema = new Schema({
     required: true,
     unique: true,
   },
-  _id: {
-    type: String,
-  },
   _partition: {
     type: String,
   },
   owner: {
     type: String,
+    required: true,
   },
   correctAnswer: {
     type: String,
@@ -66,11 +63,15 @@ const mongoSchema = new Schema({
   },
   uri: {
     type: String,
+    required: true,
   },
   viewers: [String],
   createdAt: {
     type: Date,
     required: true,
+  },
+  website: {
+    type: String,
   },
 });
 
@@ -80,8 +81,8 @@ class AdvertisementClass {
     return { advertisements };
   }
 
-  static async getAdvertisements({ ownerId }) {
-    const advertisements = await this.find({ owner: ownerId }).sort({ createdAt: -1 });
+  static async getAdvertisements(userId) {
+    const advertisements = await this.find({ owner: userId });
     return { advertisements };
   }
 
@@ -95,57 +96,81 @@ class AdvertisementClass {
     return advertisement;
   }
 
-  static async add({ name }) {
+  static async add({ owner, name, uri, website }) {
+    const advertisements = await this.find({ owner }, { name: 1 });
+
+    if (JSON.stringify(advertisements).includes(name)) {
+      throw new Error(`You already have an advertisement named: ${name}`);
+    }
+
     const slug = await generateSlug(this, name);
     if (!slug) {
       throw new Error(`Error with slug generation for name: ${name}`);
     }
     return this.create({
+      owner,
       name,
       slug,
+      uri,
+      website,
       createdAt: new Date(),
     });
   }
 
+  static async remove({ caller, _id }) {
+    const advertisement = await this.findOne({ _id });
+
+    if (!advertisement) {
+      throw new Error(`This advertisement does not exist.`);
+    }
+
+    if (advertisement.owner !== caller) {
+      throw new Error(`You must be the owner of this advertisement to delete it.`);
+    }
+
+    return this.deleteOne({
+      _id,
+    });
+  }
+
   static async edit({
-    user,
-    id,
-    uri,
-    specifiesLocation,
-    radius,
-    quiz,
+    _id,
     name,
+    website,
     question,
+    quiz,
+    correctAnswer,
+    uri,
     longitude,
     latitude,
-    isActive,
-    dailyBudget,
-    cpcv,
-    correctAnswer,
+    radius,
   }) {
-    const advertisement = await this.findById(id, 'slug name');
+    // eslint-disable-next-line no-console
+    console.log(_id);
+    const advertisement = await this.find({ _id });
+
+    // eslint-disable-next-line no-console
+    console.log(advertisement);
 
     if (!advertisement) {
       throw new Error('Advertisement is not found by id');
     }
 
-    if (advertisement && advertisement.owner !== user) {
-      throw new Error('You do not have permission to edit this advertisement');
-    }
+    // TODO
+    // if (advertisement && advertisement.owner !== userId) {
+    //   throw new Error('You do not have permission to edit this advertisement');
+    // }
 
     const modifier = {
-      uri,
-      specifiesLocation,
-      radius,
-      quiz,
       name,
+      website,
       question,
+      quiz,
+      correctAnswer,
+      uri,
       longitude,
       latitude,
-      isActive,
-      dailyBudget,
-      cpcv,
-      correctAnswer,
+      radius,
     };
 
     if (name !== advertisement.name) {
@@ -154,7 +179,7 @@ class AdvertisementClass {
     }
 
     const editedAdvertisement = await this.findOneAndUpdate(
-      { _id: id },
+      { _id },
       { $set: modifier },
       { fields: 'slug', new: true },
     );

@@ -49,10 +49,28 @@ router.post('/stripe/fetch-checkout-session', async (req, res) => {
 
 router.get('/my-advertisements', async (req, res) => {
   try {
-    const { ownerId = [] } = req.user;
+    const { advertisements } = await Advertisement.getAdvertisements(req.user._id);
 
-    const { advertisements } = await Advertisement.getAdvertisements({ ownerId });
+    advertisements.map((ad) => {
+      // eslint-disable-next-line no-param-reassign
+      ad.viewers = ad.viewers.length;
+      return null;
+    });
+    res.json({ advertisements });
+  } catch (err) {
+    res.json({ error: err.message || err.toString() });
+  }
+});
 
+router.get('/my-advertisement/:slug', async (req, res) => {
+  try {
+    const { advertisements } = await Advertisement.getAdvertisements(req.user._id);
+
+    advertisements.map((ad) => {
+      // eslint-disable-next-line no-param-reassign
+      ad.viewers = ad.viewers.length;
+      return null;
+    });
     res.json({ advertisements });
   } catch (err) {
     res.json({ error: err.message || err.toString() });

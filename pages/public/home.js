@@ -24,7 +24,7 @@ const Home = () => (
             mobileFontSize={25}
             color="#3d4849"
           >
-            Hi, we're the Quantum Computing Guys.
+            Hi, MY NAME JEFF.
           </BigTitle>
           <BigTitle marginTop={30} fontSize={60} mobileFontSize={30} color="#3d4849">
             Here's your one-stop-shop for all your quantum computing needs.

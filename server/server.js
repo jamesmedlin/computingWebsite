@@ -39,6 +39,7 @@ const URL_MAP = {
   '/login': '/public/login',
   '/my-books': '/customer/my-books',
   '/dashboard': '/customer/dashboard',
+  '/dashboard/create-advertisement': '/customer/dashboard/create-advertisement',
 };
 
 const app = next({ dev });

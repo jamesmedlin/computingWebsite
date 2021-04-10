@@ -24,102 +24,11 @@ const Home = () => (
             mobileFontSize={25}
             color="#3d4849"
           >
-            Only 7% of users pay attention to internet ads.
+            Hi, we're the Quantum Computing Guys.
           </BigTitle>
           <BigTitle marginTop={30} fontSize={60} mobileFontSize={30} color="#3d4849">
-            We crank it to 100%
+            Here's your one-stop-shop for all your quantum computing needs.
           </BigTitle>
-        </div>
-      </Container>
-    </div>
-    <div className="uploadContainer">
-      <Container>
-        <div className="Row">
-          <div className="columnCentered">
-            <div className="uploadTextContainer">
-              <BigTitle textAlign="center">Skip buying screentime. Buy attention.</BigTitle>
-            </div>
-            <div className="stepsRow">
-              <div className="step">
-                {/* <LittleTitle>
-                  Today’s advertising is like skywriting. Businesses like yours spend in the blind
-                  hope that potential customers look up, much less retain your message.
-                </LittleTitle>
-                <LittleTitle>We take a surgical approach.</LittleTitle> */}
-                <LittleTitle>Only pay for confirmed views.</LittleTitle>
-                <LittleTitle>Viewers must pass a quiz to prove they paid attention.</LittleTitle>
-              </div>
-              <div className="step">
-                <LittleTitle>This is a picture (insert here)</LittleTitle>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </div>
-    <div className="uploadContainerRev">
-      <Container>
-        <div className="Row">
-          <div className="columnCentered">
-            <div className="uploadTextContainer">
-              <BigTitle textAlign="center">Make it easier for your customers to spend.</BigTitle>
-            </div>
-            <div className="stepsRowRev">
-              <div className="step">
-                <LittleTitle>This is a picture (insert here)</LittleTitle>
-              </div>
-              <div className="step">
-                <LittleTitle fontSize={20} marginBottom={7}>
-                  Add shortcuts for your viewers:
-                </LittleTitle>
-                <LittleTitle>DoorDash/UberEats</LittleTitle>
-                <LittleTitle>Amazon</LittleTitle>
-                <LittleTitle>Live Yelp score</LittleTitle>
-                <LittleTitle>
-                  Navigation (live directions and distance from your business.)
-                </LittleTitle>
-                <LittleTitle>Reminder (reminds a viewer later)</LittleTitle>
-                <LittleTitle>etc.</LittleTitle>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </div>
-    <div className="uploadContainer">
-      <Container>
-        <div className="Row">
-          <div className="columnCentered">
-            <div className="uploadTextContainer">
-              <BigTitle textAlign="center">Truly target your customers.</BigTitle>
-            </div>
-            <div className="stepsRow">
-              <div className="step">
-                <LittleTitle marginBottom={7}>
-                  Users verify their own information. No more relying on estimated guesses of who a
-                  user is by third-parties.
-                </LittleTitle>
-                <LittleTitle>
-                  Set a location and radius of where you want your ad viewed.
-                </LittleTitle>
-              </div>
-              <div className="step">
-                <LittleTitle>This is a picture (insert here)</LittleTitle>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </div>
-    <div className="uploadContainer">
-      <Container>
-        <div className="Row">
-          <div className="columnCentered">
-            <div className="uploadTextContainer">
-              <BigTitle>Our Partners</BigTitle>
-            </div>
-            <Slideshow items={['First Partner', 'Second Partner', 'Third Partner']} />
-          </div>
         </div>
       </Container>
     </div>

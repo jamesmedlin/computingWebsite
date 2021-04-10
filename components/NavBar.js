@@ -25,7 +25,7 @@ const NavBar = ({ user }) => {
                 {/* eslint-disable jsx-a11y/no-static-element-interactions */}
                 {/* eslint-disable jsx-a11y/click-events-have-key-events */}
                 <a className="link-large" onClick={closeNav}>
-                  <span className="link-text">Bank It!</span>
+                  <span className="link-text">QCG</span>
                 </a>
               </Link>
             </div>

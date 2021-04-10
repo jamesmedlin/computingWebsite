@@ -1,6 +1,6 @@
 const passport = require('passport');
 const Strategy = require('passport-google-oauth').OAuth2Strategy;
-const User = require('./models/User');
+const User = require('./models/Customer');
 
 function setupGoogle({ server, ROOT_URL }) {
   const verify = async (accessToken, refreshToken, profile, verified) => {
